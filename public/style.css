@@ -39,6 +39,7 @@ video {
 
 .main__chat_window {
   flex-grow: 1;
+  overflow-y: scroll;
 }
 
 .main__message_container {
@@ -99,4 +100,7 @@ video {
 .messages {
   color: white;
   list-style: none;
+}
+.message__output {
+  color: #d2d2d2;
 }

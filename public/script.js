@@ -40,8 +40,8 @@ navigator.mediaDevices.getUserMedia({
   })
   
   socket.on('createMessage', message => {
-    console.log(message);
-    $('.messages').append(`<li class="message"><b>You:</b><br>${message}</li>`)
+    $('.messages').append(`<li class="message"><b>You:</b><br><p class="message__output">${message}</p></li>`)
+    scrollToBottom()
   })
 })
 
@@ -66,3 +66,35 @@ const addVideoStream = (video, stream) => {
   videoGrid.append(video)
 }
 
+const scrollToBottom = () => {
+  let d = $('.main__chat_window');
+  d.scrollTop(d.prop("scrollHeight"));
+}
+
+// Mute the video
+const muteUnmute = () => {
+  const enabled = myVideoStream.getAudioTracks()[0].enabled;
+  if (enabled) {
+    myVideoStream.getAudioTracks()[0].enabled = false;
+    setUnmuteButton();
+  } else {
+    setMuteButton();
+    myVideoStream.getAudioTracks()[0].enabled = true;
+  }
+}
+
+const setMuteButton = () => {
+  const html = `
+    <i class="fas fa-microphone"></i>
+    <span>Mute</span>
+  `
+  document.querySelector('.main__mute_button').innerHTML = html;
+}
+
+const setUnmuteButton = () => {
+  const html = `
+    <i class="unmute fas fa-microphone-slash"></i>
+    <span>Unmute</span>
+  `
+  document.querySelector('.main__mute_button').innerHTML = html;
+}
