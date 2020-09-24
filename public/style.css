@@ -95,3 +95,8 @@ video {
 .main__controls__block {
   display: flex;
 }
+
+.messages {
+  color: white;
+  list-style: none;
+}
