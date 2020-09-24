@@ -1,7 +1,8 @@
 # Video call application
 
-Tech stack:
+Tech stack/extensions:
 - EJS
 - ExpressJS
 - UUID
-- Socket.IO
+- Socket.io
+- PeerJS
