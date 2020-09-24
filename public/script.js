@@ -1,5 +1,4 @@
 const socket = io('/')
-
 const videoGrid = document.getElementById('video-grid')
 const myVideo = document.createElement('video');
 myVideo.muted = true;
@@ -27,7 +26,7 @@ navigator.mediaDevices.getUserMedia({
     })
   })
 
-  socket.on('user-connected', (userId) => {
+  socket.on('user-connected', userId => {
     connectToNewUser(userId, stream)
   })
 })
@@ -45,7 +44,6 @@ const connectToNewUser = (userId, stream) => {
   })
 }
 
-
 const addVideoStream = (video, stream) => {
   video.srcObject = stream;
   video.addEventListener('loadedmetadata', () => {
@@ -53,3 +51,13 @@ const addVideoStream = (video, stream) => {
   })
   videoGrid.append(video)
 }
+
+let text = $('input')
+
+$('html').keydown(function(e) {
+  if (e.which == 13 && text.val().length !== 0) {
+    console.log(text.val());
+    socket.emit('message', text.val());
+    text.val('')
+  }
+})
