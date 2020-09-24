@@ -104,3 +104,7 @@ video {
 .message__output {
   color: #d2d2d2;
 }
+
+.unmute, .stop {
+  color: #cc3b33;
+}
