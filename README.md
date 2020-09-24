@@ -3,4 +3,5 @@
 Tech stack:
 - EJS
 - ExpressJS
+- UUID
 - Socket.IO
